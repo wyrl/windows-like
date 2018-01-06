@@ -1,110 +1,92 @@
-<script type="text/javascript" src='js/jquery.js'></script>
-<script type="text/javascript" src='js/jquery-ui.js'></script>
-<link rel="stylesheet" href="css/jquery-ui.css" />
-<link rel="stylesheet" href="css/wyrl_plugin.css" />
-<link rel="stylesheet" href="demo/demo.css" />
-<link rel="stylesheet" href="demo/info/style.css"/>
-<!-- <link rel="stylesheet" href="jquery-ui.css" />
-<script type="text/javascript" src='jquery-ui.js'></script> -->
-<script type="text/javascript" src='js/wyrl_plugin.js'></script>
-<div id='forms'>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo</title>
+	<script type="text/javascript" src='js/jquery.js'></script>
+	<script type="text/javascript" src='js/jquery-ui.js'></script>
+	<link rel="stylesheet" href="css/jquery-ui.css" />
 	
-	<div id="test1" class="winform">
-		<div class="content">
-			<h1>Hello World, Yeah! Rock 'N Roll</h1>
-		</div>
-	</div>
+	<link rel="stylesheet" href="css/wyrl_plugin.css" />
+	<script type="text/javascript" src='js/wyrl_plugin.js'></script>
 	
-	<div id="test2" class="winform">
-		<div class="content">
-			<h1>Hello World, Yeah! Rock 'N Roll</h1>
+	<link rel="stylesheet" href="demo/demo.css" />
+	<link rel="stylesheet" href="demo/info/style.css"/>
+</head>
+<body>
+	<div id='forms'>
+		
+		<div id="test1" class="winform">
+			<div class="content">
+				<h1>Hello World, Yeah! Rock 'N Roll</h1>
+			</div>
 		</div>
 		
-	</div>
-	
-	<div id="test3" class="winform" win-title="Hello World">
-		<div class="content">
-			<h1>Yeah! Rock 'N Roll</h1>
+		<div id="test2" class="winform">
+			<div class="content">
+				<h1>Hello World, Yeah! Rock 'N Roll</h1>
+			</div>
+			
+		</div>
+		
+		<div id="test3" class="winform" win-title="Hello World">
+			<div class="content">
+				<h1>Yeah! Rock 'N Roll</h1>
+			</div>
+		</div>
+
+		<div id="test4" class="winform" win-title="Hello World">
+			<div class="content">
+				<div class="info-box">
+			        <table>
+			        	<tr>
+			            	<td valign="top"><img src="demo/info/images/room.jpg" width="130px"/></td>
+			                <td colspan="2" valign="top">
+			                	<span class="title">Room for Rent</span><br/>
+			                    <ul class="desc">
+			                    	<li style="word-wrap:break-word;width:300px"><span style="font-weight:bold">Description:</span> asdfasdasssssffffffffffffffff....</li>
+			                    	<li><a href="#">more</a></li>
+			                    </ul>
+			                </td>
+			            </tr>
+			            <tr>
+			            	<td></td>
+			            	<td>Price:</td>
+			                <td>1500/month</td>
+			            </tr>
+			            <tr>
+			            	<td></td>
+			            	<td>Location:</td>
+			                <td>Sabang, Danao City near Mitsumi</td>
+			            </tr>
+			            <tr>
+			            	<td></td>
+			            	<td>Contact#:</td>
+			                <td>09212324456</td>
+			            </tr>
+			        </table>
+			        <ul class="info-nav">
+			        	<li><a href="#">Comments</a></li>
+			            <li><a href="#">View full page</a></li>
+			        </ul>
+			        <div style="clear:both"></div>
+			    </div>
+			</div>
 		</div>
 	</div>
 
-	<div id="test4" class="winform" win-title="Hello World">
-		<div class="content">
-			<div class="info-box">
-		        <table>
-		        	<tr>
-		            	<td valign="top"><img src="demo/info/images/room.jpg" width="130px"/></td>
-		                <td colspan="2" valign="top">
-		                	<span class="title">Room for Rent</span><br/>
-		                    <ul class="desc">
-		                    	<li style="word-wrap:break-word;width:300px"><span style="font-weight:bold">Description:</span> asdfasdasssssffffffffffffffff....</li>
-		                    	<li><a href="#">more</a></li>
-		                    </ul>
-		                </td>
-		            </tr>
-		            <tr>
-		            	<td></td>
-		            	<td>Price:</td>
-		                <td>1500/month</td>
-		            </tr>
-		            <tr>
-		            	<td></td>
-		            	<td>Location:</td>
-		                <td>Sabang, Danao City near Mitsumi</td>
-		            </tr>
-		            <tr>
-		            	<td></td>
-		            	<td>Contact#:</td>
-		                <td>09212324456</td>
-		            </tr>
-		        </table>
-		        <ul class="info-nav">
-		        	<li><a href="#">Comments</a></li>
-		            <li><a href="#">View full page</a></li>
-		        </ul>
-		        <div style="clear:both"></div>
-		    </div>
-		</div>
-	</div>
-	<!-- <div id="test5" class="winform" win-title="Hello World">
-		<div class="content">
-			<iframe frameborder="0" src="info/index.html"></iframe>
-		</div>
-	</div> -->
-</div>
 
+	<input id="add-window" type="button" value="add window" />
 
-<input id="add-window" type="button" value="add window" />
-
-<script type="text/javascript">
-	$(function(){
-		$("#add-window").click(function(){
-			//alert('adsfadf');
-			$f = $("<div><h1>Wyr'l D. Villazorda</h1></div>");
-			$('#forms').append($f);
-			$f.addWinForm('My name is');
+	<script type="text/javascript">
+		$(function(){
+			$("#add-window").click(function(){
+				//alert('adsfadf');
+				$f = $("<div><h1>Wyr'l D. Villazorda</h1></div>");
+				$('#forms').append($f);
+				$f.addWinForm('My name is');
+			});
 		});
-	});
-	
-</script>
-<!---<div id="test2" resizable=true>
-	<div class='topbar'>Test2</div>
-</div> -->
-
-<!-- <div id="draggable" class="ui-widget-content">
-    <div>
-    
-    </div>
-    <p>Revert the original</p>
-</div> -->
-
-<!--<script type="text/javascript">
-	$(function(){
-		$('#test').draggable();
-		$('#test').resizable();
-	});
-</script>
-
-<div id="test">
-	<div class='topbar'>Title</div>
-</div>-->
+		
+	</script>
+</body>
+</html>
