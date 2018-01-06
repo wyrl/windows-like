@@ -21,9 +21,7 @@
 
 		$winform.addClass('winform ui-widget-content');
 		$winform.prepend(html_winform);
-		/*$winform.offset({
-			left: 100 * $winform.index()
-		});*/
+
 		checkTitle($winform, 15);
 
 
@@ -31,7 +29,6 @@
 	        helper: function(){
 	            return $('<div></div>').css('opacity',0);
 	        },
-
 	        drag: function(event, ui){
 	            $(this).stop().animate({
 	                top: ui.helper.position().top,
@@ -51,12 +48,7 @@
 			}
 		});
 
-
 		$winform.mousedown(function(){
-			/*$('.winform').each(function(index, row){
-				$(this).removeClass('focus');
-			});
-			$(this).addClass('focus');*/
 			$(this).css('z-index', focusCount++);
 		});
 

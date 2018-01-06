@@ -27,7 +27,7 @@
 
 @font-face {
     font-family: symbols;
-    src: url(symbols.ttf);
+    src: url("../fonts/symbols.ttf");
 }
 
 .minimize, .maximize, .close{
