@@ -1,4 +1,5 @@
 (function($){
+	var focusCount = 0;
 	var minimizeList = [];
 
 
@@ -52,10 +53,11 @@
 
 
 		$winform.mousedown(function(){
-			$('.winform').each(function(index, row){
+			/*$('.winform').each(function(index, row){
 				$(this).removeClass('focus');
 			});
-			$(this).addClass('focus');
+			$(this).addClass('focus');*/
+			$(this).css('z-index', focusCount++);
 		});
 
 
@@ -85,6 +87,9 @@
 				$winform.find('.minimize').html('&#xE923;');
 				$winform.find('.maximize').hide();
 
+
+				$winform.addClass('left-top-corner');
+
 				$winform.attr('minimize', 'true');
 			}
 			else{
@@ -99,6 +104,8 @@
 					})
 					.resizable('enable')
 					.draggable('enable');
+
+				$winform.removeClass('left-top-corner');
 
 				checkTitle($winform, 15);
 
@@ -178,7 +185,7 @@
 
 			$winform.animate({
 					top: (window.innerHeight - 45),
-					left: 150 * i,
+					left: 152 * i,
 					height: "40px",
 					width: "150px"
 				}, 'fast');
@@ -189,7 +196,7 @@
 					if($winform != undefined){
 						$winform.offset({
 							top: (window.innerHeight - 45),
-							left: 150 * index,
+							left: 153 * index,
 						});
 					}
 				});

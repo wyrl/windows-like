@@ -16,10 +16,10 @@
 	cursor: move;
 	background-color: #ECEFF1;
 }
-.winform.focus{
-	z-index: 1000;
-}
 
+.left-top-corner{
+	border-top-left-radius: 15px;
+}
 
 .topbar > div{
 	margin-bottom: 5px; 
