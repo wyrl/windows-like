@@ -31,7 +31,12 @@
 	height: 100%;
 	padding: 0px;
 }
-#test5 iframe{
+.testiframe iframe{
+	width: 100%;
+	height: 100%;
+}
+
+.testvideo video{
 	width: 100%;
 	height: 100%;
 }
