@@ -2,7 +2,22 @@
 	var theme = {
 		win7 : {
 			controlbox : {
-				
+				minimize : {
+					index : 0,
+					symbol : '&#x030;'
+				},
+				maximize :{
+					index : 1,
+					symbol : '&#x031;'
+				},
+				close :{
+					index : 2,
+					symbol : '&#x072;'
+				},
+				restore : {
+					index : 3,
+					symbol : '&#x032;'
+				}
 			}
 		},
 		win10 : {

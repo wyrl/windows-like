@@ -10,6 +10,10 @@
 	font-family: ubuntu;
 	src: url("../fonts/symbols.ttf");
 }
+@font-face{
+	font-family: Marlett;
+	src : url("../fonts/Marlett.ttf");
+}
 
 /*Windows 10 Theme*/
 
@@ -76,17 +80,22 @@
 	width:200px;
 	height:200px;
 	box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
-	padding-bottom: 30px;
-	/*display: inline-block;*/
+	padding: 0px 8px 42px 8px;
 	overflow: hidden;
+    background-color:lightblue;
+    border-radius:8px;
+
+    /*-webkit-transition: all .25s cubic-bezier(0.52, 0.76, 0.52, 0.76);*/
+    /*transition: all .25s cubic-bezier(0.52, 0.76, 0.52, 0.76);*/
 }
+
 .win7 .topbar{
 	/*border-bottom: 1px solid black;*/
 	padding-left: 5px;
 	padding-top: 5px;
 	padding-bottom: 5px;
 	cursor: move;
-	background-color: #ECEFF1;
+	background: inherit;
 }
 
 .win7 .controlbox{
@@ -96,7 +105,7 @@
 
 .win7 .minimize, .win7 .maximize, .win7 .close{
 	padding:6px;
-	font-family: symbols;
+	font-family: Marlett;
 }
 
 .win7 .left-top-corner{
@@ -108,7 +117,10 @@
 }
 
 .win7 .window-content{
+	margin-top: 3px;
 	height: 100%;
+	background: white;
+	border: 1px solid gray;
 }
 
 .win7 .minimize:hover, .win7 .maximize:hover{
