@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Simple Webpage</title>
+		<meta charset="utf-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="http://localhost/wyrl/assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="http://localhost/wyrl/assets/css/bootstrap-social.css" />
+		<link rel="stylesheet" type="text/css" href="http://localhost/wyrl/assets/css/font-awesome.css" />
+		<script src="http://localhost/wyrl/assets/js/jquery-3.2.1.js"></script>
+		<script src="http://localhost/wyrl/assets/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="http://localhost/wyrl/assets/css/mystyle.css">
+		<script src="http://localhost/wyrl/assets/js/scrollNav.js"></script>
+	<head/>
+	
+	<body>
+		<header id="header-banner">
+			<div class="wide row text-center">
+			    <h3><span class="websitename">Wyr'l</span><span class="com">.com</span></h3>
+			</div>
+		</header><section class="container">
+  <nav id="navbar" class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/wyrl">Wyr'l</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class=""><a href="/wyrl">Home</a></li>
+        <!--<li class="dropdown "><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+          <ul class="dropdown-menu" >
+            <li><a href="#">Page 1-1</a></li>
+            <li><a href="#">Page 1-2</a></li>
+            <li><a href="#">Page 1-3</a></li>
+          </ul>
+        </li>
+        <li class=""><a href="#">Page 2</a></li>
+        <li class=""><a href="#">Page 3</a></li>-->
+        <li class="active">
+          <a href="http://localhost/wyrl/index.php/pages/view/services">Services</a>
+        </li>
+        <li class=""><a href="http://localhost/wyrl/index.php/profile">About</a></li>
+        <li class=""><a href="http://localhost/wyrl/index.php/pages/view/contact">Contact</a></li>
+      </ul>
+      <form class="navbar-form navbar-left">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search">
+          <div class="input-group-btn">
+            <button class="btn btn-default" type="submit">
+              <i class="glyphicon glyphicon-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+      <!-- <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="http://localhost/wyrl/index.php/user/signup">
+            <span class="glyphicon glyphicon-user"></span> 
+            Sign Up          </a>
+        </li>
+        <li>
+          <a href="http://localhost/wyrl/index.php/user/login; ?>">
+            <span class="glyphicon glyphicon-log-in"></span>
+            Login          </a>
+        </li>
+      </ul>-->
+    </div>
+  </nav>
+</section><section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Services</h2>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">E-Commerce</h4>
+                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">Responsive Design</h4>
+                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">Web Security</h4>
+                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                </div>
+            </div>
+        </div>
+    </section>		<footer class="bg-blue">
+			<div class="container">
+			    <div class="row">
+			    	<p class="col-sm-4">&copy; 2017 Wyr'l</p>
+			    	<ul class="col-sm-8">
+			    		<li>
+			    			<p>Follow me: </p>
+			    		</li>
+			        	<li class="col-sm-1">
+							<a class="btn btn-social-icon btn-twitter">
+								<span class="fa fa-twitter"></span>
+							</a>
+						 </li>
+			        	<li class="col-sm-1">
+			        		<a class="btn btn-social-icon btn-facebook">
+								<span class="fa fa-facebook"></span>
+							</a>
+			        	</li>
+			        	<li class="col-sm-1">
+			        		<a class="btn btn-social-icon btn-instagram">
+								<span class="fa fa-instagram"></span>
+							</a>
+			        	</li>
+			        	<li class="col-sm-1">
+			        		<a class="btn btn-social-icon btn-google">
+								<span class="fa fa-google"></span>
+							</a>
+			        	</li>
+			      	</ul>
+			    </div>
+		    </div>
+		</footer>
+	</body>
+</html>

@@ -1,16 +1,103 @@
 (function($){
-	var html_winform = 	"<div class='topbar'>" +
+	var theme = {
+		win7 : {
+			controlbox : {
+				
+			}
+		},
+		win10 : {
+			/*controlbox : [
+				{
+					name : 'minimize',
+					symbol : '&#xE949;',
+				},
+				{
+					name : 'maximize',
+					symbol : '&#xE739;'
+				},
+				{
+					name : 'close',
+					symbol : '&#xE106;'
+				},
+				{
+					name : 'restore',
+					symbol : '&#xE923;'
+				}
+			]*/
+			controlbox : {
+				minimize : {
+					index : 0,
+					symbol : '&#xE949;'
+				},
+				maximize :{
+					index : 1,
+					symbol : '&#xE739;'
+				},
+				close :{
+					index : 2,
+					symbol : '&#xE106;'
+				},
+				restore : {
+					index : 3,
+					symbol : '&#xE923;'
+				}
+			}
+		},
+		ubuntu : {
+			/*controlbox : [
+				{
+					name : 'close',
+					symbol : '&#xE711;',
+				},
+				{
+					name : 'minimize',
+					symbol : '&#xE738;'
+				},
+				{
+					name : 'maximize',
+					symbol : '&#xE739;'
+				},
+				{
+					name : 'restore',
+					symbol : '&#xE923;'
+				}
+			]*/
+			controlbox: {
+				close : {
+					index : 0,
+					symbol : '&#xE711;'
+				},
+				minimize : {
+					index : 1,
+					symbol : '&#xE738;'
+				},
+				maximize : {
+					index : 2,
+					symbol : '&#xE739;'
+				},
+				restore : {
+					index : 3,
+					symbol : '&#xE923;'
+				}
+
+			}
+		}
+	};
+
+
+
+	/*var html_winform = 	"<div class='topbar'>" +
 							"<span class='title'></span>" +
-							"<div class='controlbox' style='float:right;cursor: default;'>" +
-								"<span class='minimize'>&#x23BD;</span>" +
+							"<div class='controlbox'>" +
+								"<span class='minimize'>&#xE738;</span>" +
 								"<span class='maximize'>&#xE739;</span>" +
 								"<span class='close'>&#xE106;</span>" +
 							"</div>" +
-						"</div>"
+						"</div>"*/
 
 
 
-	function WinForm(id, $winform){
+	function WinForm(id, type,$winform){
 		var id = id;
 		//var win_title = $winform.attr('win-title');
 		
@@ -30,11 +117,30 @@
 
 		var _this = this;
 
+		//console.log(type);
+
+		var cbKey1 = Object.keys(theme[type].controlbox)[0];
+		var cbKey2 = Object.keys(theme[type].controlbox)[1];
+		var cbKey3 = Object.keys(theme[type].controlbox)[2];
+
+
+		var html_winform = 	"<div class='topbar'>" +
+							"<span class='title'></span>" +
+							"<div class='controlbox'>" +
+								"<span class='"+ cbKey1 +"'>"+ theme[type].controlbox[cbKey1].symbol +"</span>" +
+								"<span class='"+ cbKey2 +"'>"+ theme[type].controlbox[cbKey2].symbol +"</span>" +
+								"<span class='"+ cbKey3 +"'>"+ theme[type].controlbox[cbKey3].symbol +"</span>" +
+							"</div>" +
+						"</div>";
+
 		var tempContentHtml = $winform.html();
 		var newContent = '<div class="window-content">'+ tempContentHtml +'</div>';
 
-		$winform.addClass('winform ui-widget-content');
+		$winform.addClass('ui-widget-content');
+		$winform.addClass(type);
+		$winform.addClass('winform');
 		$winform.addClass('win-init');
+
 		$winform.html(html_winform + newContent);
 
 		checkTitle($winform, 15);
@@ -84,7 +190,7 @@
 
 		var maximize = function(){
 			if(!maximize_toggle){
-				$winform.find('.maximize').html('&#xE923;');
+				$winform.find('.maximize').html(theme[type].controlbox.restore.symbol);
 				$winform.animate({
 					top: 0,
 					left: 0,
@@ -103,7 +209,7 @@
 				restore();
 				enabledAll(true);
 				$(window).unbind('resize');
-				$winform.find('.maximize').html('&#xE739;');
+				$winform.find('.maximize').html(theme[type].controlbox.maximize.symbol);
 			}
 			maximize_toggle = !maximize_toggle;
 		};
@@ -112,13 +218,13 @@
 			if(!minimize_toggle){
 				if(maximize_toggle){
 					maximize_toggle = false;
-					$winform.find('.maximize').html('&#xE739;');
+					$winform.find('.maximize').html(theme[type].controlbox.maximize.symbol);
 				}
 
 				enabledAll(false);
 
 				$winform.find('.title').text($winform.attr('win-title').substring(0, 5) + "...");
-				$winform.find('.minimize').html('&#xE923;');
+				$winform.find('.minimize').html(theme[type].controlbox.restore.symbol);
 				$winform.find('.maximize').hide();
 
 
@@ -134,13 +240,18 @@
 				checkTitle($winform, 15);
 
 				$(window).unbind('resize');
-				$winform.find('.minimize').html('&#x23BD;');
+				$winform.find('.minimize').html(theme[type].controlbox.minimize.symbol);
 				if(isMaximizeVisible)
 					$winform.find('.maximize').show();
 			}
 
 
 			minimize_toggle = !minimize_toggle;
+		}
+
+		var closed = function(){
+			$winform.remove();
+			is_closed = false;
 		}
 
 		var enabledAll = function(enable){
@@ -177,13 +288,13 @@
 			var isCancel = false;
 			$.each(win_minimizes, function(index, win_minimize){
 				if(index != 0){
-					var enable = win_minimize.call(_this, !minimize_toggle);
+					var enable = win_minimize(!minimize_toggle);
 					isCancel = win_minimize != null && $.isFunction(win_minimize) && enable != undefined && !enable
 				}
 			});
 			if(!isCancel){
 				minimize();
-				win_minimizes[0].call(_this, minimize_toggle);
+				win_minimizes[0](minimize_toggle);
 			}
 		});
 
@@ -192,13 +303,13 @@
 			var isCancel = false;
 			$.each(win_maximizes, function(index, win_maximize){
 				if(index != 0){
-					var enable = win_maximize.call(_this, !maximize_toggle);
+					var enable = win_maximize(!maximize_toggle);
 					isCancel = win_maximize != null && $.isFunction(win_maximize) && enable != undefined && !enable
 				}
 			});
 			if(!isCancel){
 				maximize();
-				win_maximizes[0].call(_this, maximize_toggle);
+				win_maximizes[0](maximize_toggle);
 			}
 		});
 
@@ -206,20 +317,17 @@
 			var isCancel = false;
 			$.each(win_closes, function(index, win_close){
 				if(index != 0){
-					var enable = win_close.call();
+					var enable = win_close();
 					isCancel = win_close != null && $.isFunction(win_close) && enable != undefined && !enable
 				}
 			});
 			if (!isCancel){
 				closed();
-				win_closes[0].call();
+				win_closes[0]();
 			}
 		});
 
-		var closed = function(){
-			$winform.remove();
-			is_closed = false;
-		}
+		
 
 
 		return {
@@ -252,7 +360,7 @@
 				if(options.visible)
 					$winform.find('.maximize').show();
 				else
-					$winform.find('.maximize').hid();
+					$winform.find('.maximize').hide();
 
 				isMaximizeVisible = options.visible;
 			},
@@ -262,6 +370,12 @@
 					$winform.find('.close').show();
 				else
 					$winform.find('.close').hide();
+			},
+			maximized : function(){
+				maximize();
+			},
+			minimized : function(){
+				minimize();
 			},
 			closed : function(){
 				closed()
@@ -285,10 +399,7 @@
 	}
 
 	function findWinFormById(id){
-		for (var i = 0; i < taskList.length; i++)
-			if(Number(taskList[i].getId()) == Number(id))
-				return taskList[i];
-		return null;
+		return taskList.find(v => v.getId() == Number(id));
 	}
 
 	function remove(array, element){
@@ -340,69 +451,74 @@
 	$.fn.winform = function(options){
 		this.each(function(index, row){
 			var $winform = $(row);
-			$winform.attr('win-id', ++win_id);
-			var $topbar = $winform.find('.topbar');
-			var opts = $.extend({
-					title : null,
-					minimizing: null,
-					maximizing: null,
-					closing: null,
-					'minimize-visible' : true,
-					'maximize-visible' : true,
-					'close-visible' : true,
-				}, $.fn.winform, options);
+			if(!$winform.hasClass('win-init')){
+				$winform.attr('win-id', ++win_id);
+				var $topbar = $winform.find('.topbar');
+				var opts = $.extend({
+						type : 'win10',
+						title : null,
+						minimizing: null,
+						maximizing: null,
+						closing: null,
+						'minimize-visible' : true,
+						'maximize-visible' : true,
+						'close-visible' : true,
+					}, $.fn.winform, options);
+
+				if(typeof options == 'string')
+					opts.type = options;
 
 
-			if(opts.title != null)
-				$winform.attr('win-title', opts.title);
+				if(opts.title != null)
+					$winform.attr('win-title', opts.title);
 
-			var wf = new WinForm(win_id, $winform);
-			taskList.push(wf);
+				var wf = new WinForm(win_id, opts.type, $winform);
+				taskList.push(wf);
 
-			$winform.mousedown(function(){
-				$(this).css('z-index', focusCount++);
-			});
+				$winform.mousedown(function(){
+					$(this).css('z-index', focusCount++);
+				});
 
-			wf.addMaximize({
-				visible : true,
-				maximizing : function(toggle){
+				wf.addMaximize({
+					visible : true,
+					maximizing : function(toggle){
 
-				}
-			});
-
-			wf.addMinimize({
-				visible : true,
-				minimizing : function(toggle){
-					if(toggle){
-						minimizeList.push($winform);
 					}
-					else{
+				});
+
+				wf.addMinimize({
+					visible : true,
+					minimizing : function(toggle){
+						if(toggle){
+							minimizeList.push($winform);
+						}
+						else{
+							remove(minimizeList, $winform);
+						}
+						animateTaskbar();
+					}
+				});
+
+				wf.addClose({
+					visible : true, 
+					closing : function(){
 						remove(minimizeList, $winform);
+						remove(taskList, $winform);
+						animateTaskbar();
+						console.log('closed...');
 					}
-					animateTaskbar();
-				}
-			});
+				});
 
-			wf.addClose({
-				visible : true, 
-				closing : function(){
-					remove(minimizeList, $winform);
-					remove(taskList, $winform);
-					animateTaskbar();
-					console.log('closed...');
-				}
-			});
+				wf.addMinimize({
+					visible : opts['minimize-visible'],
+					minimizing : (opts.minimizing != null ? opts.minimizing : function(){return true;})
+				});
 
-			wf.addMinimize({
-				visible : opts['minimize-visible'],
-				minimizing : (opts.minimizing != null ? opts.minimizing : function(){return true;})
-			});
-
-			wf.addMaximize({
-				visible : opts['maximize-visible'],
-				maximizing : (opts.maximizing != null ? opts.maximizing : function(){return true;})
-			});
-
+				wf.addMaximize({
+					visible : opts['maximize-visible'],
+					maximizing : (opts.maximizing != null ? opts.maximizing : function(){return true;})
+				});
+			}
 			
 		});
 	}
@@ -414,16 +530,22 @@
 			if($(this).hasClass('win-init')){
 				var wf = findWinFormById($(this).attr('win-id'));
 				
-				if(wf != null){
+				if(wf != undefined){
 					var options;
 
 					if(typeof f == 'boolean')
 						options = {closing : function() { return f}};
-					else if(typeof f == 'string')
-						options = {closing : function() { return f != 'false'}}
+					else if(typeof f == 'string'){
+						if(f == 'show' || f == 'hide'){
+							options = {visible : f == 'show'};
+						}
+						else if(f == 'enable' || f == 'disable'){
+							options = {closing : function() { return f == 'enable'}}
+						}
+					}
 					else if($.isFunction(f))
 						options = {closing : f};
-					else if (isJSOnOrArray){
+					else{ //if (isJSOnOrArray){
 						options = f;
 					}
 
@@ -444,33 +566,93 @@
 		})
 	}
 	$.fn.winminimize = function(f){
+		var isJSOnOrArray = isJSON(f) || $.isArray(f);
 
+		return this.each(function(){
+			if($(this).hasClass('win-init')){
+				var wf = findWinFormById($(this).attr('win-id'));
+
+				if(wf != undefined){
+					var options;
+
+					if(typeof f == 'boolean')
+						options = {minimizing : function() { return f}};
+					else if(typeof f == 'string'){
+						if(f == 'hide' || f == 'show'){
+							options = {visible : f == 'show'};
+						}
+						else if(f == 'false' || f == 'true'){
+							options = {minimizing : function() { return f == 'true'; }};
+						}
+					}
+					else if($.isFunction(f))
+						options = {minimizing : f};
+					else{ //if (isJSOnOrArray){
+						options = f;
+					}
+
+					if(f != undefined){
+						var opts = $.extend({
+							visible : true,
+							minimizing : null
+						}, $.fn.winminimize, options);
+						//console.log(opts.visible);
+
+						wf.addMinimize(opts);
+					}
+					else{
+						wf.minimized();
+					}
+				}
+			}
+		});
+	}
+
+	$.fn.winmaximize = function(f){
+		var isJSOnOrArray = isJSON(f) || $.isArray(f);
+
+		return this.each(function(){
+			if($(this).hasClass('win-init')){
+				var wf = findWinFormById($(this).attr('win-id'));
+
+				if(wf != undefined){
+					var options;
+
+					if(typeof f == 'boolean')
+						options = {maximizing : function() { return f}};
+					else if(typeof f == 'string'){
+						if(f == 'hide' || f == 'show'){
+							options = {visible : f == 'show'};
+						}
+						else if(f == 'false' || f == 'true'){
+							options = {maximizing : function() { return f == 'true'; }};
+						}
+					}
+					else if($.isFunction(f))
+						options = {maximizing : f};
+					else{ //if (isJSOnOrArray){
+						options = f;
+					}
+
+					if(f != undefined){
+						var opts = $.extend({
+							visible : true,
+							maximizing : null
+						}, $.fn.winmaximize, options);
+						//console.log(opts.visible);
+
+						wf.addMaximize(opts);
+					}
+					else{
+						wf.maximized();
+					}
+				}
+			}
+		});
 	}
 
 })(jQuery);
 
 $(function(){
-	//$('.winform').addWinForm();
-	//$('.winform').winform.init();
 	$('.winform').winform();
-	$('#test1').winclose(function(){
-		alert('Sorry! can\'t closed.');
-		return false;
-	});
-	$('.winform').winminimize(function(){
-
-	});
 });
-
-/*$(function(){
-	$('.winform').each(function(index, row){
-		$(this).addWinForm({
-			minimize: function(toggle){
-				console.log('minimize ' + toggle);
-			},
-			maximize: function(toggle){
-				console.log('maximize ' + toggle);
-			}
-		});
-	});
-})*/
