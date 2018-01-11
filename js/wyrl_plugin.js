@@ -4,19 +4,19 @@
 			controlbox : {
 				minimize : {
 					index : 0,
-					symbol : '&#x030;'
+					symbol : '&#xE921;'
 				},
 				maximize :{
 					index : 1,
-					symbol : '&#x031;'
+					symbol : '&#xE922;'
 				},
 				close :{
 					index : 2,
-					symbol : '&#x072;'
+					symbol : '&#xE711;'
 				},
 				restore : {
 					index : 3,
-					symbol : '&#x032;'
+					symbol : '&#xE923;'
 				}
 			}
 		},

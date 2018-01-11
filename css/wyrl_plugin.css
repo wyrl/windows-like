@@ -105,7 +105,7 @@
 
 .win7 .minimize, .win7 .maximize, .win7 .close{
 	padding:6px;
-	font-family: Marlett;
+	font-family: symbols;
 }
 
 .win7 .left-top-corner{
@@ -147,7 +147,7 @@
 	width:200px;
 	height:200px;
 	box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
-	padding-bottom: 30px;
+	padding-bottom: 32px;
 	/*display: inline-block;*/
 	overflow: hidden;
 }
@@ -190,6 +190,7 @@
 
 .ubuntu .window-content{
 	height: 100%;
+	border: 2px solid black;
 }
 
 .ubuntu .minimize, .ubuntu .maximize{

@@ -1,6 +1,6 @@
 $(function(){
 	$('#test2').winform();
-	//$('#test2').winclose(false);
+	///$('#test2').winclose(false);
 	//$('#test2').winminimize(false);
 	//$('#test2').winmaximize(false);
 
