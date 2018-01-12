@@ -97,6 +97,9 @@
 	cursor: move;
 	background: inherit;
 }
+.win7 .title{
+	color: #F4F4F4;
+}
 
 .win7 .controlbox{
 	float: right;

@@ -4,19 +4,24 @@
 			controlbox : {
 				minimize : {
 					index : 0,
-					symbol : '&#xE921;'
+					symbol : '<img src="../images/min.png" />'
+					//symbol : '&#xE921;'
 				},
 				maximize :{
 					index : 1,
-					symbol : '&#xE922;'
+					symbol : '<img src="../images/max.png" />'
+					//symbol : '&#xE922;'
 				},
 				close :{
 					index : 2,
-					symbol : '&#xE711;'
+					symbol : '<img src="../images/close.png" />'
+					//symbol : '&#xE711;',
+					//icon : 'close.png'
 				},
 				restore : {
 					index : 3,
-					symbol : '&#xE923;'
+					symbol : '<img src="../images/restore.png" />'
+					//symbol : '&#xE923;',
 				}
 			}
 		},
