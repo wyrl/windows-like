@@ -41,7 +41,7 @@
 	cursor: default;
 }
 
-.win10 .minimize, .win10 .maximize, .win10 .win_close{
+.win10 .minimize, .win10 .maximize, .win10 .close{
 	padding:6px;
 	font-family: symbols;
 }
@@ -62,11 +62,11 @@
 	background-color: #CFD8DC;
 }
 
-.win10 .win_close{
+.win10 .close{
 	background-color: #B0BEC5;
 	color:white;
 }
-.win10 .win_close:hover{
+.win10 .close:hover{
 	background-color: #e74856;
 }
 
@@ -130,11 +130,11 @@
 	background-color: #CFD8DC;
 }
 
-.win7 .win_close{
+.win7 .close{
 	background-color: #B0BEC5;
 	color:white;
 }
-.win7 .win_close:hover{
+.win7 .close:hover{
 	background-color: #e74856;
 }
 
@@ -177,7 +177,7 @@
 	margin-top: 5px; 
 	margin-right: 15px;
 }
-.ubuntu .minimize, .ubuntu .maximize, .ubuntu .win_close{
+.ubuntu .minimize, .ubuntu .maximize, .ubuntu .close{
 	padding:6px;
 	border-radius: 50%;
 	margin-right: 5px;
@@ -209,13 +209,13 @@
 	background: #5F5F5F;
 }
 
-.ubuntu .win_close{
+.ubuntu .close{
 	background: linear-gradient(to bottom, #FE642F, #AF2D00);
 }
-.ubuntu .win_close:hover{
+.ubuntu .close:hover{
 	background: linear-gradient(to bottom, #FEA485, #FF4B0D);
 }
-.ubuntu .win_close:active{
+.ubuntu .close:active{
 	background-color: #AF2D00;
 }
 

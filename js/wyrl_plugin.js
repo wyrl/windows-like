@@ -12,7 +12,7 @@
 					symbol : '<img src="../images/max.png" />'
 					//symbol : '&#xE922;'
 				},
-				close :{
+				win_close :{
 					index : 2,
 					symbol : '<img src="../images/close.png" />'
 					//symbol : '&#xE711;',
@@ -53,7 +53,7 @@
 					index : 1,
 					symbol : '&#xE739;'
 				},
-				close :{
+				win_close :{
 					index : 2,
 					symbol : '&#xE106;'
 				},
@@ -83,7 +83,7 @@
 				}
 			]*/
 			controlbox: {
-				close : {
+				win_close : {
 					index : 0,
 					symbol : '&#xE711;'
 				},
@@ -172,7 +172,7 @@
 
 		$winform.draggable({     
 	        helper: function(){
-	            return $('<div></div>').css('opacity',0);
+	            return $('<div></div>').css('opacity',0).css('position', 'fixed');
 	        },
 	        drag: function(event, ui){
 	            $(this).stop().animate({
@@ -333,7 +333,7 @@
 			}
 		});
 
-		$winform.find('.close').click(function(){
+		$winform.find('.win_close').click(function(){
 			var isCancel = false;
 			$.each(win_closes, function(index, win_close){
 				if(index != 0){
@@ -387,9 +387,9 @@
 			addClose : function(options){
 				win_closes.push(options.closing);
 				if(options.visible)
-					$winform.find('.close').show();
+					$winform.find('.win_close').show();
 				else
-					$winform.find('.close').hide();
+					$winform.find('.win_close').hide();
 			},
 			maximized : function(){
 				maximize();
@@ -463,7 +463,7 @@
 	    }
 	}
 
-	var focusCount = 0;
+	var focusCount = 1000;
 	var minimizeList = [];
 	var taskList = [];
 	var win_id = 0;
@@ -495,6 +495,8 @@
 				var wf = new WinForm(win_id, opts.type, $winform);
 				taskList.push(wf);
 
+				$winform.css('z-index', focusCount);
+
 				$winform.mousedown(function(){
 					$(this).css('z-index', focusCount++);
 				});
@@ -502,7 +504,6 @@
 				wf.addMaximize({
 					visible : true,
 					maximizing : function(toggle){
-
 					}
 				});
 
@@ -525,6 +526,8 @@
 						remove(minimizeList, $winform);
 						remove(taskList, $winform);
 						animateTaskbar();
+						if(opts.closing != null)
+							opts.closing();
 						console.log('closed...');
 					}
 				});

@@ -28,11 +28,11 @@
 			</div>
 		</div>
 		
-		<div id="test3">
+		<!--<div id="test3">
 			<div class="content">
 				<h1>Wyr'l D. Villazorda</h1>
 			</div>
-		</div>
+		</div>-->
 
 		<!--<div id="test4" class="winform" win-title="Hello World">
 			<div class="content">
@@ -89,19 +89,22 @@
 
 	</div>
 
-
+	<!--<div>
+		<a href="demo/products-comparison-table/index.html">click comparison</a>
+	</div>-->
 	<input id="add-window" type="button" value="add window" />
 
-	<!--<script type="text/javascript">
+	<script type="text/javascript">
 		$(function(){
 			$("#add-window").click(function(){
 				//alert('adsfadf');
 				$f = $("<div><h1>Wyr'l D. Villazorda</h1></div>");
 				$('#forms').append($f);
-				$f.addWinForm('My name is');
+				//$f.addWinForm('My name is');
+				$f.winform();
 			});
 		});
 		
-	</script>-->
+	</script>
 </body>
 </html>
